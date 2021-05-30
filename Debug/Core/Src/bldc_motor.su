@@ -1,0 +1,5 @@
+bldc_motor.c:15:6:bldc_motor_init	16	static
+bldc_motor.c:38:6:bldc_motor_six_step_algorithm	8	static
+bldc_motor.c:108:6:bldc_motor_set_speed	16	static
+bldc_motor.c:122:6:bldc_motor_PWM_Config_Channel	16	static
+bldc_motor.c:132:6:bldc_motor_OC_Config_Channel	16	static
