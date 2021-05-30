@@ -21,13 +21,7 @@ void bldc_motor_init(TIM_HandleTypeDef *_tim_pwm, TIM_HandleTypeDef *_tim_com)
 	bldc.speed_pulse = 0;
 	bldc.dir = CW;
 
-	bldc.sConfigOC.OCMode = TIM_OCMODE_PWM1;
-	bldc.sConfigOC.Pulse = bldc.speed_pulse;
-	bldc.sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
-	bldc.sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
-	bldc.sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-	bldc.sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
-	bldc.sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
+	bldc_motor_Config_Channel_Init();
 
 	__HAL_TIM_SET_AUTORELOAD(bldc.tim_com, ARR_TIM3_VALUE);
 
@@ -117,6 +111,17 @@ void bldc_motor_set_speed(uint32_t speed, direction dir)
 	}
 
 	bldc.dir = dir;
+}
+
+void bldc_motor_Config_Channel_Init(void)
+{
+	bldc.sConfigOC.OCMode = TIM_OCMODE_PWM1;
+	bldc.sConfigOC.Pulse = 0;
+	bldc.sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+	bldc.sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
+	bldc.sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+	bldc.sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
+	bldc.sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
 }
 
 void bldc_motor_PWM_Config_Channel(uint32_t pulse, uint32_t channel)

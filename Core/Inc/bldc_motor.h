@@ -30,6 +30,7 @@ void bldc_motor_init(TIM_HandleTypeDef *_tim_pwm, TIM_HandleTypeDef *_tim_com);
 void bldc_motor_six_step_algorithm(void);
 void bldc_motor_set_speed(uint32_t speed, direction dir);
 
+void bldc_motor_Config_Channel_Init(void);
 void bldc_motor_PWM_Config_Channel(uint32_t pulse, uint32_t channel);
 void bldc_motor_OC_Config_Channel(uint32_t mode, uint32_t channel);
 
